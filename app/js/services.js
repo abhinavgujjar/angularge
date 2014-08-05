@@ -10,7 +10,29 @@ value('version', '0.1').
 value('uiConfig', {
 	descLimit: 200,
 	resultsLimit: 10
-}).
+})
+	.factory('hotelVotingService', function() {
+		return {
+			upVote: function(hotel) {
+				if (!hotel.rating) {
+					hotel.rating = 0;
+				}
+
+				hotel.rating++;
+
+			},
+			downVote: function(hotel) {
+				if (!hotel.rating) {
+					hotel.rating = 0;
+				}
+
+				if (hotel.rating > 0) {
+					hotel.rating--;
+				}
+
+			}
+		};
+	}).
 factory('hotelsProvider', function() {
 	var hotels = [{
 		name: 'Taj Westend',
@@ -47,8 +69,8 @@ factory('hotelsProvider', function() {
 		getHotels: function() {
 			return hotels;
 		},
-		addHotel: function(hotel){
+		addHotel: function(hotel) {
 			hotels.push(hotel);
 		}
-	}
+	};
 });

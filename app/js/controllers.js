@@ -3,14 +3,18 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-	.controller('hotelsController', ['$scope', 'hotelsProvider', 'uiConfig',
-		function($scope, hp, uiConfig) {
+	.controller('hotelsController', ['$scope', 'hotelsProvider', 'uiConfig', 'hotelVotingService',
+		function($scope, hp, uiConfig, vService) {
 
 			var hotels = hp.getHotels();
 
 			$scope.descLimit =  uiConfig.descLimit;
 
 			$scope.hotels = hotels;
+
+			$scope.upVote = vService.upVote;
+
+			$scope.downVote = vService.downVote;
 		}
 	])
 	.controller('createController', ['$scope', 'hotelsProvider', '$location',

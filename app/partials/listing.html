@@ -18,8 +18,15 @@
      </div>
 
      <div >
-       <div class="row" ng-repeat="item in hotels | filter : { name: searchTerm }| orderBy : 'name' ">
-         <div ng-show="!editMode">
+       <div class="row" ng-repeat="item in hotels | filter : { name: searchTerm }| orderBy : 'rating' : true ">
+       <div class="col-md-1">
+        <div><button ng-click="upVote(item)">up</button></div>
+        <div><h2>{{item.rating || 0}}</h2></div>
+        <div><button ng-click="downVote(item)">down</button></div>
+
+       </div>
+
+         <div ng-show="!editMode" class="col-md-11">
            <div class="col-md-3">
              <img ng-src="http://i.imgur.com/{{item.imgUrl}}" width="150px" />   
            </div>
@@ -29,7 +36,7 @@
                <h2 ng-class="{'highlight' : (item.price >15000) }" >{{item.name | uppercase}}</h2>
              </a>
            </div>
-           <div class="col-md-3">
+           <div class="col-md-2">
              <span ng-show="!showMore">{{item.description | limitTo : descLimit}}</span>
              <span ng-show="showMore">{{item.description}}</span>
 
@@ -39,7 +46,7 @@
                <a href="" ng-click="showMore=true">more</a>
              </span>
            </div>
-           <div class="col-md-3">
+           <div class="col-md-2">
 
              <h3>{{item.price}}</h3>
              <button ng-show="item.availableForBook" ng-click="editMode=true">Edit</button>
