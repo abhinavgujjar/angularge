@@ -1,1 +1,59 @@
-<h1>Create New Hotel</h1>
+<div class="container" >
+<style type="text/css">
+	input.ng-pristine.ng-invalid {
+		border-color: yellow;
+		border-width: 1px;
+	}
+
+	input.ng-dirty.ng-invalid {
+		border-color: red;
+		border-width: 1px;
+
+	}
+
+input.ng-dirty.ng-valid {
+		border-color: green;
+		border-width: 1px;
+
+	}
+
+</style>
+
+	<h1>Create New Hotel</h1>
+
+	<ng-form class="form-horizontal" name="hotelForm" >
+	<div class="col-md-6">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Name</label>
+			<div class="col-sm-10">
+				<input type="text" ng-model="hotel.name" name="uName" required class="form-control" >
+				<span style="color: red" ng-show="hotelForm.uName.$invalid">Please enter the name</span>
+				</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Location</label>
+			<div class="col-sm-10">
+				<input type="text" ng-model="hotel.location"  class="form-control" ></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Price</label>
+			<div class="col-sm-10">
+				<input type="number" ng-model="hotel.price"  class="form-control" ></div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Image</label>
+			<div class="col-sm-10">
+				<input type="text" ng-model="hotel.imgUrl"  class="form-control" ></div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button class="btn btn-default" ng-disabled="hotelForm.$invalid" ng-click="saveHotel(hotelForm, hotel)" >Create</button>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-6">
+			<img ng-src="http://i.imgur.com/{{hotel.imgUrl}}" width="200px"></div>
+		</div>
+	</ng-form>
+
+</div>
