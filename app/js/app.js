@@ -7,7 +7,6 @@ angular.module('myApp', [
 	'myApp.filters',
 	'myApp.services',
 	'myApp.directives',
-	'myApp.controllers'
 ]).
 config(['$routeProvider',
 	function($routeProvider) {
@@ -17,11 +16,11 @@ config(['$routeProvider',
 		});
 		$routeProvider.when('/listing', {
 			templateUrl: 'partials/listing.html',
-			controller: 'hotelsController'
+			controller: 'listingController'
 		});
 		$routeProvider.when('/alt', {
 			templateUrl: 'partials/alt.html',
-			controller: 'hotelsController'
+			controller: 'listingController'
 		});
 		$routeProvider.when('/error', {
 			templateUrl: 'partials/error.html'
