@@ -24,93 +24,36 @@
         <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-        <div class="container" ng-controller="hotelsController">
-          <div class="row">
-            <div class="col-md-4">
-              Search term
-              <input type="text" ng-model="searchTerm" class="form-control" />
+
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+              <a class="navbar-brand" href="#">Hotel Advisor</a>
             </div>
 
-            <div class="col-md-3" >
-              <select ng-model="descLimit">
-                <option value="10">10</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-              </select>
-            </div>
-
-            <div>The limit is : {{descLimit}}</div>
-          </div>
-
-          <div >
-            <div class="row" ng-repeat="item in hotels | filter : { name: searchTerm }| orderBy : 'name' ">
-              <div ng-show="!editMode">
-                <div class="col-md-3">
-                  <img ng-src="http://i.imgur.com/{{item.imgUrl}}" width="150px" />
-                </div>
-
-                <div ng-class-even="'even'" ng-class-odd="'odd'" class="col-md-3">
-                  <a ng-href="{{item.url}}">
-                    <h2 ng-class="{'highlight' : (item.price >15000) }" >{{item.name | uppercase}}</h2>
-                  </a>
-                </div>
-                <div class="col-md-3">
-                  <span ng-show="!showMore">{{item.description | limitTo : descLimit}}</span>
-                  <span ng-show="showMore">{{item.description}}</span>
-
-                  <span ng-show="item.description.length >descLimit && !showMore">...</span>
-                  <span ng-show="item.description.length >descLimit && !showMore"><a href="" ng-click="showMore=true">more</a></span>
-                </div>
-                <div class="col-md-3">
-
-                  <h3>{{item.price}}</h3>
-                  <button ng-show="item.availableForBook" ng-click="editMode=true">Edit</button>
-                </div>
-                <hr />
-              </div>
-
-               <div ng-show="editMode">
-                <div class="col-md-3">
-                  <img ng-src="http://i.imgur.com/{{item.imgUrl}}" width="150px" />
-                </div>
-
-                <div ng-class-even="'even'" ng-class-odd="'odd'" class="col-md-3">
-                  <input  type="text" ng-model="item.name" class="form-control">
-                </div>
-                <div class="col-md-3">
-                  <span ng-show="!showMore">{{item.description | limitTo : descLimit}}</span>
-                  <span ng-show="showMore">{{item.description}}</span>
-
-                  <span ng-show="item.description.length >descLimit && !showMore">...</span>
-                  <span ng-show="item.description.length >descLimit && !showMore"><a href="" ng-click="showMore=true">more</a></span>
-                </div>
-                <div class="col-md-3">
-
-                  <h3><input type="number" ng-model="item.price" class="form-control" /></h3>
-                  <button ng-show="item.availableForBook" ng-click="editMode=false" >Done</button>
-                </div>
-                <hr />
-              </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li >
+                  <a href="#">List</a>
+                </li>
+                <li>
+                  <a href="#">Create</a>
+                </li>
+              </ul>
             </div>
           </div>
+        </nav>
+        <ng-view></ng-view>
 
-        </div>
-
-        <div>
-          Angular seed app: v
-          <span app-version></span>
-        </div>
-
-        <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-      -->
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="js/app.js"></script>
-      <script src="js/services.js"></script>
-      <script src="js/controllers.js"></script>
-      <script src="js/filters.js"></script>
-      <script src="js/directives.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
 </body>
-    </html>
+      </html>
