@@ -5,6 +5,10 @@ angular.module('myApp')
 		function($scope, hp, uiConfig, vService, $filter,
 		 convlib, $routeParams, $rootScope, $location) {
 
+		 	$scope.addToFavorites = function(hotel){
+		 		$scope.$broadcast('hotel:favorited', hotel);
+		 	}
+
 			$scope.loading = true;
 			hp.getHotels().then(function(response) {
 				$scope.hotels = response.data.results;

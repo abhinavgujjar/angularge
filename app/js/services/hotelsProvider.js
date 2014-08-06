@@ -1,32 +1,41 @@
 'use strict';
 
 angular.module('myApp.services')
-.factory('hotelsProvider',['$http', '$q', 
-	function($http, $q) {
+	.factory('hotelsProvider', ['$http', '$q',
+		function($http, $q) {
 
-	return {
-		getHotels: function() {
-			return $http.get('data/hotels.json'); 
-		},
-		addHotel: function(hotel) {
-			//hotels.push(hotel);
-		},
-		getHotel: function(hotelId){
-			var deferred = $q.defer();
+			var defaultHotel = {};
 
-			$http.get('data/hotels.json').success(function(data){
-				var hotels = data.results;
-				var targetHotel;
-				angular.forEach(hotels, function(item){
-					if ( item.id === hotelId){
-						targetHotel = item;
-					}
-				});
+			return {
+				getHotels: function() {
+					return $http.get('data/hotels.json');
+				},
+				addHotel: function(hotel) {
+					//hotels.push(hotel);
 
-				deferred.resolve(targetHotel);
-			});
+					defaultHotel = angular.copy(hotel);
 
-			return deferred.promise;
+				},
+				getHotel: function(hotelId) {
+					var deferred = $q.defer();
+
+					$http.get('data/hotels.json').success(function(data) {
+						var hotels = data.results;
+						var targetHotel;
+						angular.forEach(hotels, function(item) {
+							if (item.id === hotelId) {
+								targetHotel = item;
+							}
+						});
+
+						deferred.resolve(targetHotel);
+					});
+
+					return deferred.promise;
+				},
+				defaultHotel: function() {
+					return defaultHotel;
+				}
+			};
 		}
-	};
-}]);
+	]);

@@ -18,6 +18,9 @@ config(['$routeProvider',
 			templateUrl: 'partials/listing.html',
 			controller: 'listingController'
 		});
+		$routeProvider.when('/login', {
+			templateUrl: 'partials/login.html'
+		});
 		$routeProvider.when('/details/:hotelId', {
 			templateUrl: 'partials/details.html',
 			controller: 'detailsController'

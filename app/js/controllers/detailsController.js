@@ -7,6 +7,16 @@ angular.module('myApp')
 
 			hotelsProvider.getHotel(hotelId).then(function(result){
 				$scope.item = result;
+
+				$scope.$emit('hotelselected', result.name);
 			});
+
+			$scope.addComment = function(){
+				if(!$scope.item.comments ){
+					$scope.item.comments = [];
+				}
+
+				$scope.item.comments.push(angular.copy($scope.comment));
+			}
 		}
 	])
