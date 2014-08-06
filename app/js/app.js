@@ -18,6 +18,10 @@ config(['$routeProvider',
 			templateUrl: 'partials/listing.html',
 			controller: 'listingController'
 		});
+		$routeProvider.when('/details/:hotelId', {
+			templateUrl: 'partials/details.html',
+			controller: 'detailsController'
+		});
 		$routeProvider.when('/alt', {
 			templateUrl: 'partials/alt.html',
 			controller: 'listingController'

@@ -1,12 +1,36 @@
 angular.module('myApp')
-.controller('listingController', ['$scope', 'hotelsProvider', 'uiConfig', 'hotelVotingService',
-		function($scope, hp, uiConfig, vService) {
+	.controller('listingController', ['$scope', 'hotelsProvider',
+		'uiConfig', 'hotelVotingService', '$filter', 'convlib',
+		'$routeParams','$rootScope','$location',
+		function($scope, hp, uiConfig, vService, $filter,
+		 convlib, $routeParams, $rootScope, $location) {
 
-			var hotels = hp.getHotels();
+			$scope.loading = true;
+			hp.getHotels().then(function(response) {
+				$scope.hotels = response.data.results;
+			}).finally(function() {
+				$scope.loading = false;
+			});
+
+			$scope.showDetails= function(hotel){
+				hp.selectedHotel = hotel;
+				$location.url('/details');
+			}
 
 			$scope.descLimit = uiConfig.descLimit;
 
-			$scope.hotels = hotels;
+			$scope.search = function() {
+				var tajHotels = $filter('filter')($scope.hotels, {
+					$: 'taj'
+				});
+
+				console.log(tajHotels);
+			}
+
+			$scope.toSqft = function(input){
+				return convlib.toSqft(input)
+			}
+
 
 			$scope.upVote = function(hotel) {
 

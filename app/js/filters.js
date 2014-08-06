@@ -7,4 +7,12 @@ angular.module('myApp.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     };
+  }]).
+  filter('toSqFeet', [ 'convlib', function(convlib) {
+
+    return function(input) {
+      return convlib.toSqFt(input);
+    };
+
+
   }]);
