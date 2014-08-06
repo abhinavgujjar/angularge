@@ -46,14 +46,28 @@ input.ng-dirty.ng-valid {
 				<input type="text" ng-model="hotel.imgUrl"  class="form-control" ></div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-2 control-label">Description</label>
+			<div class="col-sm-10">
+				<preview entry="hotel.description" rows="10"></preview>
+			</div>
+		</div><div class="form-group">
+			<label class="col-sm-2 control-label">Comment</label>
+			<div class="col-sm-10">
+				<preview ></preview>
+			</div>
+		</div>
+
+		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button class="btn btn-default" ng-disabled="hotelForm.$invalid" ng-click="saveHotel(hotelForm, hotel)" >Create</button>
 			</div>
 		</div>
 		</div>
 		<div class="col-md-6">
-			<img ng-src="http://i.imgur.com/{{hotel.imgUrl}}" width="200px"></div>
+			<div><img ng-src="http://i.imgur.com/{{hotel.imgUrl}}" width="200px"></div></div>
+			<div ></div>
 		</div>
+
 	</ng-form>
 
 </div>

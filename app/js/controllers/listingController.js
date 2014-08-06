@@ -11,7 +11,7 @@ angular.module('myApp')
 
 			$scope.loading = true;
 			hp.getHotels().then(function(response) {
-				$scope.hotels = response.data.results;
+				$scope.hotels = response.data;
 			}).finally(function() {
 				$scope.loading = false;
 			});

@@ -1,0 +1,45 @@
+<div >
+	<div class="col-md-1">
+		<div class="btn-group-vertical">
+			<a class="btn" >
+				<span class="glyphicon glyphicon-chevron-up" ng-click="upVote(item)"></span>
+			</a>
+			<a class="btn">{{item.rating}}</a>
+			<a class="btn" >
+				<span class="glyphicon glyphicon-chevron-down" ng-click="downVote(item)"></span>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div>
+			<img ng-src="http://i.imgur.com/{{item.imgUrl}}" width="70px" />
+		</div>
+		<div>
+			<button class="btn btn-sm" ng-click="addToFav()">fav</button>
+		</div>
+	</div>
+
+	<div ng-class-even="'even'" ng-class-odd="'odd'" class="col-md-3">
+		<a ng-href="#/details/{{item.id}}">
+			<h4 ng-class="{'highlight' : (item.price >15000) }" >{{item.name | uppercase}}</h4>
+		</a>
+		<span class="h5">{{item.area |toSqFeet | number:2}} sq.ft</span>
+	</div>
+	<div class="col-md-3">
+		<span ng-show="!showMore">{{item.description | limitTo : descLimit}}</span>
+		<span ng-show="showMore">{{item.description}}</span>
+
+		<span ng-show="item.description.length >descLimit && !showMore">...</span>
+		<span ng-show="item.description.length >
+			descLimit && !showMore">
+			<a href="" ng-click="showMore=true">more</a>
+		</span>
+	</div>
+	<div class="col-md-3">
+
+		<h4>{{item.price}}</h4>
+		<button ng-show="item.availableForBook" ng-click="editMode=true">Edit</button>
+	</div>
+	<hr />
+</div>

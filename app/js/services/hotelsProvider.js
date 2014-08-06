@@ -8,12 +8,30 @@ angular.module('myApp.services')
 
 			return {
 				getHotels: function() {
-					return $http.get('data/hotels.json');
+					return $http.get('https://api.parse.com/1/classes/hotels', {
+						headers: {
+							'X-Parse-Application-Id': 'CFGDzavc88DToPz0RQhoPRUvLwloB39U3bSTTttk',
+							'X-Parse-REST-API-Key': 'LsaiORZx4WEWyJzN2rcVXLBaFKAQdxWERx8XTzrW',
+						},
+						transformResponse: function(data) {
+							var raw = angular.fromJson(data);
+							return raw.results;
+						}
+					});
 				},
 				addHotel: function(hotel) {
 					//hotels.push(hotel);
 
 					defaultHotel = angular.copy(hotel);
+
+					$http.post('https://api.parse.com/1/classes/hotels', hotel, {
+						headers: {
+							'X-Parse-Application-Id': 'CFGDzavc88DToPz0RQhoPRUvLwloB39U3bSTTttk',
+							'X-Parse-REST-API-Key': 'LsaiORZx4WEWyJzN2rcVXLBaFKAQdxWERx8XTzrW',
+						}
+					}).success(function() {
+						alert('wooo hooo!')
+					});
 
 				},
 				getHotel: function(hotelId) {

@@ -4,6 +4,10 @@ angular.module('myApp')
 
 			$scope.hotel = angular.copy(hotelsProvider.defaultHotel());			
 
+			$scope.showAlert = function(message){
+				alert(message)
+			}
+
 			$scope.saveHotel = function(form, hotel) {
 				if (form.$invalid) {
 					alert('form Invalid');

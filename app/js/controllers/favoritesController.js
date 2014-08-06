@@ -1,5 +1,5 @@
 angular.module('myApp')
-	.controller('favoritesController', ['$scope', 
+	.controller('favoritesController', ['$scope',
 		function($scope) {
 			$scope.favorites = [];
 
